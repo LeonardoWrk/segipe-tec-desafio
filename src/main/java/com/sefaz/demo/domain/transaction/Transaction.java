@@ -1,7 +1,7 @@
 package com.sefaz.demo.domain.transaction;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;  
+import java.time.LocalDateTime;
 import com.sefaz.demo.domain.user.User;
 
 import jakarta.persistence.Entity;
@@ -20,7 +20,8 @@ public class Transaction {
     private long id;
 
     private BigDecimal amount;
-    // um usuario pode varias transa;oes, mas uma transa;ao so pode ter um sender e um reciever, rela;ao com a tabalea usuario
+    // um usuario pode varias transa;oes, mas uma transa;ao so pode ter um sender e
+    // um reciever, rela;ao com a tabalea usuario
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private User sender; // User da classe user
@@ -78,5 +79,5 @@ public class Transaction {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
-  
+
 }
