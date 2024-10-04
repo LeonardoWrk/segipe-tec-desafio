@@ -39,6 +39,9 @@ public class Transaction {
         this.receiver = receiver;
         this.timestamp = timestamp;
     }
+    //criar um instacia da classe sem precisar passar nada
+    public Transaction() {
+    }
 
     public long getId() {
         return id;
