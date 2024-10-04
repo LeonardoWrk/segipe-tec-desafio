@@ -1,6 +1,9 @@
 package com.sefaz.demo.domain.user;
 
 import java.math.BigDecimal;
+
+import com.sefaz.demo.dtos.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +41,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.balance = balance;
+    }
+
+    public User(UserDTO data){
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.balance = data.balance();
+        this.password = data.password();
+        this.email = data.email();
     }
 
     public long getId() {

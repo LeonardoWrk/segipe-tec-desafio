@@ -1,11 +1,13 @@
 package com.sefaz.demo.services;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sefaz.demo.domain.transaction.Transaction;
 import com.sefaz.demo.domain.user.User;
+import com.sefaz.demo.dtos.UserDTO;
 import com.sefaz.demo.repositories.UserRepository;
 
 // service concentra as regras de negocio
@@ -26,6 +28,16 @@ public class UserService {
     //para nao usar o userepo no transaction service
     public User findUserById(Long id) throws Exception{
         return this.userRepository.findUserById(id).orElseThrow(() -> new Exception("Usuario nao encontrado"));
+    }
+
+    public User createUser(UserDTO data){
+        User newUser = new User(data);
+        this.saveUser(newUser);
+        return newUser;
+    }
+    // List<objet/list type>
+    public List<User> getAllUsers(){
+       return this.userRepository.findAll();    
     }
 
     public void saveUser(User user){

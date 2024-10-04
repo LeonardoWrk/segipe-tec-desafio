@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sefaz.demo.domain.transaction.Transaction;
 import com.sefaz.demo.domain.user.User;
-import com.sefaz.demo.dots.TransacitonDTO;
+import com.sefaz.demo.dtos.TransacitonDTO;
 import com.sefaz.demo.repositories.TransactionRepository;
 
 @Service

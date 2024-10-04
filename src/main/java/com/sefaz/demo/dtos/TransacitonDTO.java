@@ -1,4 +1,4 @@
-package com.sefaz.demo.dots;
+package com.sefaz.demo.dtos;
 
 import java.math.BigDecimal;
 
