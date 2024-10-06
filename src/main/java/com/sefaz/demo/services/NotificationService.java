@@ -9,8 +9,6 @@ import com.sefaz.demo.domain.user.User;
 @Service
 public class NotificationService {
 
-    @Autowired
-    private RestTemplate restTemplate;
 
     public void sendNotification(User user, String message){
         String email = user.getEmail();

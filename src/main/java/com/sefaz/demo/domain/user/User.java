@@ -51,6 +51,9 @@ public class User {
         this.email = data.email();
     }
 
+    public User() {
+    }
+
     public long getId() {
         return id;
     }
@@ -107,6 +110,16 @@ public class User {
         this.balance = balance;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", document='" + document + '\'' +
+                ", email='" + email + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
     
 }
