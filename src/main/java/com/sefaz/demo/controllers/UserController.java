@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController()
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
     
     @Autowired
