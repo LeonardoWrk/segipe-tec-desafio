@@ -1,6 +1,7 @@
 package com.sefaz.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,8 @@ public class TransactionController {
 
     @PostMapping
     // <> = oq vem no corpo da responseEntity
-    public ResponseEntity<Transaction> createTransaciton(@RequestBody TransacitonDTO transaction){
-        
+    public ResponseEntity<Transaction> createTransaciton(@RequestBody TransacitonDTO transaction) throws Exception{
+        Transaction newTransaction = this.transactionService.createTransaciton(transaction);
+        return new ResponseEntity<>(newTransaction, HttpStatus.OK);
     }
 }

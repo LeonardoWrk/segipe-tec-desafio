@@ -18,7 +18,7 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionrepo;
     //dto = data transfer objects
-    public void createTransaciton(TransacitonDTO transaction) throws Exception{
+    public Transaction createTransaciton(TransacitonDTO transaction) throws Exception{
         // VOLTAR NESSA PARTE user -> string
        User sender = this.userService.findUserById(transaction.senderId());
        User receiver = this.userService.findUserById(transaction.receiverId());
@@ -39,5 +39,7 @@ public class TransactionService {
        this.transactionrepo.save(newTransaction);
        this.userService.saveUser(sender);
        this.userService.saveUser(receiver);
+
+       return newTransaction;
     }
 }
