@@ -8,6 +8,7 @@ import { Account, Deposit, Transaction, Transfer, Withdrawal } from '../models';
   styleUrls: ['./account-management.component.css']
 })
 export class AccountManagementComponent implements OnInit {
+  
   accounts: Account[] = [];
   transactions: Transaction[] = [];
   newAccount: Account = {  // Inicializando o newAccount com propriedades vazias
@@ -52,12 +53,28 @@ export class AccountManagementComponent implements OnInit {
   }
 
   getAccounts(): void {
-    this.apiService.getAccounts().subscribe(accounts => this.accounts = accounts);
-  }
-
-  getStatement(): void {
-    const accountId = 1; // Substitua pelo ID da conta que você quer buscar
-    this.apiService.getStatement(accountId).subscribe(transactions =>  this.transactions = transactions);
+    this.apiService.getAccounts().subscribe(accounts => {
+      this.accounts = accounts; // Dentro do subscribe, garantimos que o log é feito após os dados serem carregados
+    });
+  }// Alteração para refletir que é um array de arrays
+ 
+  getStatement(id: number | undefined): void {
+    if (id !== undefined) {
+      this.apiService.getStatement(id).subscribe({
+        next: (transactions: Transaction[]) => {
+          this.transactions = transactions;
+          console.log("Transações:", this.transactions);
+        },
+        error: (error) => {
+          console.error("Erro ao obter transações:", error);
+        },
+        complete: () => {
+          console.log("Requisição completa.");
+        }
+      });
+    } else {
+      console.error('ID is undefined');
+    }
   }
 
   addAccount(): void {

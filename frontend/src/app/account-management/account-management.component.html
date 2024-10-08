@@ -15,15 +15,14 @@
         <tr *ngFor="let transaction of transactions">
             <td>{{ transaction.id }}</td>
             <td>{{ transaction.amount | currency:'BRL' }}</td>
-            <td>{{ transaction.sender}}</td>
-            <td>{{ transaction.receiver}}</td>
+            <td>{{ transaction.sender?.firstName }} {{ transaction.sender?.lastName }}</td>
+            <td>{{ transaction.receiver?.firstName || '---' }}</td>
             <td>{{ transaction.timestamp | date:'dd/MM/yyyy HH:mm:ss' }}</td>
             <td>{{ transaction.obText }}</td>
             <td>{{ transaction.type }}</td>
         </tr>
     </tbody>
 </table>
-
 
 <form *ngIf="showDepositForm3" (ngSubmit)="makeTransfer()">
   <label for="senderId">ID da Conta:</label>
@@ -122,6 +121,7 @@
 </form>
 
 <ul>
+  {{accounts}}
   <li *ngFor="let account of accounts">
     {{ account.id }} - {{ account.firstName }} - {{ account.balance}}
     <button (click)="editAccount(account)">Editar</button>
@@ -129,6 +129,6 @@
     <button (click)="selectForDeposit(account)">Depositar</button>
     <button (click)="selectForWithdraw(account)">Saque</button>
     <button (click)="selectForTransaction(account)">transaçao</button>
-    <button (click)="getStatement()">transaçao</button>  <!-- Botão para selecionar a conta para depósito -->
+    <button (click)="getStatement(account.id)">transaçao</button>  <!-- Botão para selecionar a conta para depósito -->
   </li>
 </ul>

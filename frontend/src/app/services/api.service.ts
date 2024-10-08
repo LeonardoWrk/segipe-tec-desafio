@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Account, Deposit, Withdrawal, Transfer, Transaction, User } from '../models'; // Aqui você importa as interfaces
 @Injectable({
   providedIn: 'root'
@@ -46,6 +46,10 @@ export class ApiService {
 
   // Extrato
   getStatement(accountId: number): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${this.baseUrl}transactions/extrato/${accountId}`);
+    return this.http.get<{ transactions: Transaction[] }>(`${this.baseUrl}transactions/extrato/${accountId}`)
+      .pipe(
+        map(response => response.transactions) // Extraia a lista de transações do objeto de resposta
+      );
   }
+  
 }

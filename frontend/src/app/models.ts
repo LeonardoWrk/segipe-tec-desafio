@@ -41,7 +41,7 @@
     obText: string;
     type: string; // 'Deposit' ou 'Withdrawal'
   }
-  
+
   export interface User {
     id: number;
     firstName: string;
