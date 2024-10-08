@@ -1,26 +1,33 @@
 // models.ts
-export interface Account {
-    id: number;
-    name: string;
-    type: string; // 'Corrente' ou 'Poupança'
+
+// src/app/models/account.model.ts
+
+  export interface Account {
+    receiverId?: number;
+    id?: number;
+    firstName: string;
+    lastName: string;
+    document: string;
     balance?: number;
+    email: string;
+    password: string;
   }
   
   export interface Deposit {
-    accountId: number;
+    receiverId: number;
     amount: number;
     obText: string;
   }
   
   export interface Withdrawal {
-    accountId: number;
+    receiverId: number;
     amount: number;
     obText: string;
   }
   
   export interface Transfer {
-    sourceAccountId: number;
-    destinationAccountId: number;
+    senderId: number;
+    receiverId: number;
     amount: number;
     obText: string;
   }

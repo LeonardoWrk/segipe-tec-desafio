@@ -22,15 +22,15 @@ public class DepositService {
 
       User receiver = this.userService.findUserById(deposit.receiverId());
 
-      userService.validateDeposit(deposit.value());
+      userService.validateDeposit(deposit.amount());
       //atualizar valores
       Deposit newDeposit = new Deposit();
-      newDeposit.setAmount(deposit.value());
+      newDeposit.setAmount(deposit.amount());
       newDeposit.setReceiver(receiver);
       newDeposit.setTimestamp(LocalDateTime.now());
       newDeposit.setObText(deposit.obText());
 
-      receiver.setBalance(receiver.getBalance().add(deposit.value()));
+      receiver.setBalance(receiver.getBalance().add(deposit.amount()));
 
       this.depositRepository.save(newDeposit);
       this.userService.saveUser(receiver);

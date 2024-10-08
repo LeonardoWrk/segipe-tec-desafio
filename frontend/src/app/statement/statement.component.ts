@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../../../s/src/app/services/api.service';
-import { Account, Deposit, Withdrawal, Transfer, Transaction, User } from '../../../../s/src/app/models'; // Aqui você importa as interfaces
+import { ApiService } from 's/src/app/services/api.service';
+import { Account, Deposit, Withdrawal, Transfer, Transaction, User } from 's/src/app/models'; // Aqui você importa as interfaces
 @Component({
   selector: 'app-statement',
   templateUrl: './statement.component.html'

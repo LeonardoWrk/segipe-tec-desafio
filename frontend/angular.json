@@ -66,6 +66,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "aot": true,
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -83,6 +84,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "aot": true,
             "polyfills": [
               "zone.js",
               "zone.js/testing"
@@ -102,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "6144bc12-84fb-4299-ad07-509aac483f85"
   }
 }

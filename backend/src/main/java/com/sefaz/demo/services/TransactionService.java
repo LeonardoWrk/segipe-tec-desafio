@@ -27,18 +27,18 @@ public class TransactionService {
        User sender = this.userService.findUserById(transaction.senderId());
        User receiver = this.userService.findUserById(transaction.receiverId());
 
-       userService.validateTransaction(sender, transaction.value());
+       userService.validateTransaction(sender, transaction.amount());
         // atualizar valores
        Transaction newTransaction = new Transaction();
-       newTransaction.setAmount(transaction.value());
+       newTransaction.setAmount(transaction.amount());
        newTransaction.setSender(sender);
        newTransaction.setReceiver(receiver);
        newTransaction.setTimestamp(LocalDateTime.now());
        newTransaction.setObText(transaction.obText());
         // minha balance atual e meu get balance subitraido o valor da transa;ao
-       sender.setBalance(sender.getBalance().subtract(transaction.value()));
+       sender.setBalance(sender.getBalance().subtract(transaction.amount()));
        // o contrario da de cima
-       receiver.setBalance(receiver.getBalance().add(transaction.value()));
+       receiver.setBalance(receiver.getBalance().add(transaction.amount()));
 
        //persistir no banco, this pegar instacia da classe
        this.transactionrepo.save(newTransaction);

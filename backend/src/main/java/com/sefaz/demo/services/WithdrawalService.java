@@ -24,15 +24,15 @@ public class WithdrawalService {
 
         User receiver = this.userService.findUserById(withdrawal.receiverId());
 
-        userService.validateWithdrawal(receiver, withdrawal.value());
+        userService.validateWithdrawal(receiver, withdrawal.amount());
         //atualizar valores
         Withdrawal newWithdrawal = new Withdrawal();
-        newWithdrawal.setAmount(withdrawal.value());
+        newWithdrawal.setAmount(withdrawal.amount());
         newWithdrawal.setReceiver(receiver);
         newWithdrawal.setTimestamp(LocalDateTime.now());
         newWithdrawal.setObText(withdrawal.obText());
 
-        receiver.setBalance(receiver.getBalance().subtract(withdrawal.value()));
+        receiver.setBalance(receiver.getBalance().subtract(withdrawal.amount()));
 
         this.withdrawalRepository.save(newWithdrawal);
         this.userService.saveUser(receiver);

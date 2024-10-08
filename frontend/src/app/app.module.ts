@@ -1,32 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Importa o FormsModule
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module'; 
 import { AppComponent } from './app.component';
 import { AccountManagementComponent } from './account-management/account-management.component';
-import { DepositComponent } from './deposit/deposit.component';
-import { WithdrawalComponent } from './withdrawal/withdrawal.component';
-import { TransferComponent } from './transfer/transfer.component';
 import { StatementComponent } from './statement/statement.component';
-import { HttpClientModule } from '@angular/common/http'; // Importa o HttpClientModule
-import { ApiService } from './services/api.service'; // Importe o serviço
+import { HttpClientModule } from '@angular/common/http'; 
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountManagementComponent,
-    DepositComponent,
-    WithdrawalComponent,
-    TransferComponent,
     StatementComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
-    AppRoutingModule,
-    FormsModule, // Adicione o FormsModule aqui
-    HttpClientModule // Importa o HttpClientModule para as chamadas de API
+    AppRoutingModule, 
+    FormsModule, 
+    HttpClientModule 
   ],
-  providers: [ApiService], // Adicione o serviço aqui
+  providers: [ApiService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

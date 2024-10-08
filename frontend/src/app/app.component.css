@@ -1,0 +1,40 @@
+/* Estilo geral do nav */
+nav {
+    background-color: #007bff; /* Cor de fundo da navegação */
+    padding: 10px 20px; /* Preenchimento interno */
+  }
+  
+  /* Estilo da lista de navegação */
+  nav ul {
+    list-style-type: none; /* Remove marcadores da lista */
+    margin: 0; /* Remove margem */
+    padding: 0; /* Remove preenchimento */
+    display: flex; /* Exibe itens em linha */
+    justify-content: space-around; /* Espaça uniformemente os itens */
+  }
+  
+  /* Estilo dos itens da lista */
+  nav li {
+    margin: 0; /* Remove margem */
+  }
+  
+  /* Estilo dos links */
+  nav a {
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+    padding: 10px 15px; /* Preenchimento interno */
+    border-radius: 4px; /* Cantos arredondados */
+    transition: background-color 0.3s; /* Efeito suave ao passar o mouse */
+  }
+  
+  /* Estilo dos links ao passar o mouse */
+  nav a:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  }
+  
+  /* Estilo para o link ativo */
+  nav a.active {
+    background-color: #0056b3; /* Cor de fundo do link ativo */
+    font-weight: bold; /* Negrito */
+  }
+  

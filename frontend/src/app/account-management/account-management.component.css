@@ -1,0 +1,96 @@
+/* Estilo geral do formulário */
+form {
+    max-width: 500px; /* Largura máxima do formulário */
+    margin: 20px auto; /* Centraliza o formulário */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda do formulário */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    background-color: #f9f9f9; /* Cor de fundo suave */
+  }
+  
+  /* Estilo dos rótulos (labels) */
+  label {
+    display: block; /* Exibe como bloco para ocupar toda a largura */
+    margin-bottom: 8px; /* Espaço abaixo do rótulo */
+    font-weight: bold; /* Negrito */
+    color: #333; /* Cor do texto */
+  }
+  
+  /* Estilo dos inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"] {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin-bottom: 15px; /* Espaço abaixo do input */
+    border: 1px solid #ccc; /* Borda padrão */
+    border-radius: 4px; /* Cantos arredondados */
+    box-sizing: border-box; /* Para incluir padding e bordas no cálculo da largura */
+    transition: border-color 0.3s; /* Efeito suave ao focar */
+  }
+  
+  /* Estilo do input ao focar */
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    outline: none; /* Remove a borda padrão ao focar */
+  }
+  
+  /* Estilo do botão */
+  button[type="submit"] {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    padding: 10px 15px; /* Espaçamento interno */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor pointer ao passar o mouse */
+    transition: background-color 0.3s; /* Efeito suave ao passar o mouse */
+  }
+  
+  /* Estilo do botão ao passar o mouse */
+  button[type="submit"]:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  }
+  
+  /* Estilo da lista de contas */
+  ul {
+    list-style-type: none; /* Remove marcadores da lista */
+    padding: 0; /* Remove espaçamento interno */
+  }
+  
+  /* Estilo dos itens da lista */
+  li {
+    margin-bottom: 10px; /* Espaço abaixo dos itens */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda dos itens */
+    border-radius: 4px; /* Cantos arredondados */
+    background-color: #f1f1f1; /* Cor de fundo dos itens */
+  }
+  
+  .transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.transaction-table th, .transaction-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.transaction-table th {
+    background-color: #f2f2f2;
+}
+
+.transaction-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.transaction-table tr:hover {
+    background-color: #f1f1f1;
+}
