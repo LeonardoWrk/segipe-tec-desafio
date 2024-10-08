@@ -1,0 +1,8 @@
+<h2>Transferência</h2>
+<form (ngSubmit)="makeTransfer()">
+  <label>Conta Origem: <input [(ngModel)]="transfer.sourceAccountId" name="sourceAccountId"></label>
+  <label>Conta Destino: <input [(ngModel)]="transfer.destinationAccountId" name="destinationAccountId"></label>
+  <label>Valor: <input [(ngModel)]="transfer.amount" name="amount"></label>
+  <label>Observação: <input [(ngModel)]="transfer.obText" name="obText"></label>
+  <button type="submit">Transferir</button>
+</form>
