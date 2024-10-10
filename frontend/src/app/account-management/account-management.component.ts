@@ -135,7 +135,7 @@ export class AccountManagementComponent implements OnInit {
     if (this.depositData.receiverId && this.depositData.amount > 0) {
       this.apiService.makeDeposit(this.depositData).subscribe(response => {
           alert('Depósito realizado com sucesso!');
-          this.resetDepositForm();
+          this.resetDepositForm(); 
           this.getAccounts();
       }, error => {
           console.error('Erro ao realizar depósito:', error);
@@ -146,15 +146,11 @@ export class AccountManagementComponent implements OnInit {
   }
 }
 
-  selectForDeposit(account: Account): void {
-    this.selectedAccount = account;// Atribui corretamente o ID da conta
+  selectForDeposit(): void {
+    // this.selectedAccount = account;// Atribui corretamente o ID da conta
     this.showDepositForm = true; // Mostra o formulário de depósito
-  }
-
-  resetDepositForm(): void {
-    this.depositData = { receiverId: 0, amount: 0, obText: '' }; // Reseta o formulário
-    // this.selectedAccount = null; // Limpa a conta selecionada
-    this.showDepositForm = false; // Esconde o formulário
+    this.showDepositForm2 = false;
+    this.showDepositForm3 = false;
   }
 
   makeWithdraw(): void {
@@ -187,6 +183,12 @@ export class AccountManagementComponent implements OnInit {
     }
   }
 
+  resetDepositForm(): void {
+    this.depositData = { receiverId: 0, amount: 0, obText: '' }; // Reseta o formulário
+    // this.selectedAccount = null; // Limpa a conta selecionada
+    this.showDepositForm = false; // Esconde o formulário
+  }
+
   resetDepositForm2(): void {
     this.withdrawData = { receiverId: 0, amount: 0, obText: '' }; // Reseta o formulário
     // this.selectedAccount = null; // Limpa a conta selecionada
@@ -199,13 +201,17 @@ export class AccountManagementComponent implements OnInit {
     this.showDepositForm3 = false; // Esconde o formulário
   }
 
-  selectForWithdraw(account: Account): void {
+  selectForWithdraw(): void {
     // this.selectedAccount = account; nao entendo mais a necessidade, revisita para repensar logica
+    this.showDepositForm = false;
+    this.showDepositForm3 = false;
     this.showDepositForm2 = true; // Mostra o formulário de depósito
   }
 
-  selectForTransaction(account: Account): void {
-    this.selectedAccount = account;// Atribui corretamente o ID da conta
+  selectForTransaction(): void {
+    // this.selectedAccount = account;// Atribui corretamente o ID da conta
+    this.showDepositForm = false;
+    this.showDepositForm2 = false;
     this.showDepositForm3 = true; // Mostra o formulário de depósito
   }
 

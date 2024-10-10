@@ -53,33 +53,6 @@ public class TransactionController {
         return new ResponseEntity<>(newTransaction, HttpStatus.OK);
     }
 
-    // @GetMapping("/extrato/{id}")
-    // public ResponseEntity<Map<String, Object>> getExtrato(@PathVariable Long id) {
-    //     // Buscar conta pelo ID
-    //     var userP = userRepository.findById(id);
-    //     if (userP.isEmpty()) {
-    //         return ResponseEntity.badRequest().body(Collections.singletonMap("error", "Conta não encontrada."));
-    //     }
-    
-    //     List<Deposit> depositList = depositRepository.findDepositById(id)
-    //         .map(Collections::singletonList)
-    //         .orElse(Collections.emptyList());
-    //     List<Withdrawal> withdrawalList = withdrawalRepositoryl.findWithById(id)
-    //         .map(Collections::singletonList)
-    //         .orElse(Collections.emptyList());
-    
-    //     List<Transaction> allTransactions = new ArrayList<>();
-    //     depositList.forEach(deposit -> allTransactions.add(transactionService.convertToTransaction(deposit)));
-    //     withdrawalList.forEach(withdrawal -> allTransactions.add(transactionService.convertToTransaction(withdrawal)));
-    
-    //     // Ordenando por timestamp
-    //     allTransactions.sort(Comparator.comparing(Transaction::getTimestamp));
-    
-    //     Map<String, Object> responseMap = new HashMap<>();
-    //     responseMap.put("transactions", allTransactions);
-    
-    //     return ResponseEntity.ok(responseMap);
-    // }
     @GetMapping("/extrato/{id}")
     public ResponseEntity getExtrato(@PathVariable Long id) {
         // Buscar conta pelo ID
@@ -87,26 +60,26 @@ public class TransactionController {
         if (userP.isEmpty()) {
             return ResponseEntity.badRequest().body("Conta não encontrada.");
         }
-
-        List<Deposit> depositList = depositRepository.findDepositById(id)
-            .map(Collections::singletonList)
+    
+        // Buscar depósitos e saques pelo ID do usuário
+        List<Deposit> depositList = depositRepository.findDepositsByReceiverId(userP.get().getId())
             .orElse(Collections.emptyList());
-        List<Withdrawal> withdrawalList = withdrawalRepositoryl.findWithById(id)
-            .map(Collections::singletonList)
+    
+        List<Withdrawal> withdrawalList = withdrawalRepositoryl.findWithdrawalsByReceiverId(userP.get().getId())
             .orElse(Collections.emptyList());
-
+    
         List<Transaction> allTransactions = new ArrayList<>();
         depositList.forEach(deposit -> allTransactions.add(transactionService.convertToTransaction(deposit)));
         withdrawalList.forEach(withdrawal -> allTransactions.add(transactionService.convertToTransaction(withdrawal)));
-
-        // Ordenando por timestamp
+    
+        // Ordenar pelo timestamp
         allTransactions.sort(Comparator.comparing(Transaction::getTimestamp));
-
+    
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("transactions", allTransactions);
-
+    
         return ResponseEntity.ok(responseMap);
-        
     }
+    
 
 }

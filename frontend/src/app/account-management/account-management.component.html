@@ -37,7 +37,7 @@
   <label for="obText">Observação:</label>
   <input id="obText" [(ngModel)]="transferData.obText" name="obText" required>
 
-  <button type="submit">Depositar</button>
+  <button type="submit">Transferir</button>
   <button type="button" (click)="resetDepositForm3()">Cancelar</button> 
 </form>
 
@@ -54,12 +54,12 @@
   <label for="obText">Observação:</label>
   <input id="obText" [(ngModel)]="withdrawData.obText" name="obText" required>
 
-  <button type="submit">Depositar</button>
+  <button type="submit">Saque</button>
   <button type="button" (click)="resetDepositForm2()">Cancelar</button>
 </form>
 
 
-<h2 *ngIf="showDepositForm">Realizar Depósito para {{ selectedAccount.firstName }}</h2>
+<h2 *ngIf="showDepositForm ">Realizar Depósito para {{ selectedAccount.firstName }}</h2>
 <form *ngIf="showDepositForm" (ngSubmit)="makeDeposit()">
   <label for="accountId">ID da Conta:</label>
   <input id="accountId" type="number" [(ngModel)]="depositData.receiverId" name="accountId" required>
@@ -121,14 +121,13 @@
 </form>
 
 <ul>
-  {{accounts}}
   <li *ngFor="let account of accounts">
     {{ account.id }} - {{ account.firstName }} - {{ account.balance}}
     <button (click)="editAccount(account)">Editar</button>
     <button (click)="deleteAccount(account.id)">Excluir</button> 
-    <button (click)="selectForDeposit(account)">Depositar</button>
-    <button (click)="selectForWithdraw(account)">Saque</button>
-    <button (click)="selectForTransaction(account)">transaçao</button>
+    <button (click)="selectForDeposit()">Depositar</button>
+    <button (click)="selectForWithdraw()">Saque</button>
+    <button (click)="selectForTransaction()">transaçao</button>
     <button (click)="getStatement(account.id)">Extrato</button>  <!-- Botão para selecionar a conta para depósito -->
   </li>
 </ul>

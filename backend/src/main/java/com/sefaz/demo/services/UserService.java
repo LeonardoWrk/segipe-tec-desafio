@@ -51,7 +51,7 @@ public class UserService {
             throw new Exception("Sua conta deve ter mais que 0 para a açao ser efetuada"); 
         }
 
-        if (receiver.getBalance().compareTo(amount) <= 0) {
+        if (receiver.getBalance().compareTo(amount) < 0) {
             throw new Exception("Voce nao possui esse valor em conta!"); 
         }
     }
